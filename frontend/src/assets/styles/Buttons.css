@@ -1,0 +1,40 @@
+:root {
+  --color-primary: hsl(0, 0%, 100%);
+  --bg-color-primary: hsl(348, 85%, 54%);
+  --color-secondary: hsl(0, 0%, 100%);
+  --bg-color-secondary: transparent;
+}
+
+.btn {
+  font-size: 1.2em;
+  font-weight: 400;
+  padding: 0.5em 1em;
+  transform: scale(1);
+}
+
+.btn:hover {
+  transform: scale(1);
+}
+
+.btn-primary {
+  background-color: var(--bg-color-primary);
+  color: var(--color-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary);
+  color: var(--bg-color-primary);
+}
+
+.btn-secondary {
+  background-color: var(--bg-color-secondary);
+  color: var(--color-secondary);
+  border: 2px solid var(--bg-color-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-color-primary);
+  color: var(--color-primary);
+  /* border: none; */
+  border: 2px solid var(--bg-color-primary);
+}
