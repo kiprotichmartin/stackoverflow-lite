@@ -19,11 +19,13 @@
 .btn-primary {
   background-color: var(--bg-color-primary);
   color: var(--color-primary);
+  border: 2px solid var(--bg-color-primary);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary);
-  color: var(--bg-color-primary);
+  /* background-color: var(--color-primary);
+  color: var(--bg-color-primary); */
+  opacity: .75;
 }
 
 .btn-secondary {

@@ -1,0 +1,33 @@
+.main-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.initialpage-container {
+  width: 60%;
+  padding: 2em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: 2px solid hsl(0, 0%, 100%); */
+  row-gap: 2em;
+}
+
+.action-btns {
+  width: 100%;
+  display: flex;
+  justify-content: stretch;
+  column-gap: 1em;
+}
+
+.action-btns > PrimaryButton {
+  flex-grow: 1;
+}
+
+.search-input {
+  flex-grow: 2;
+  font-size: 1.2em;
+  padding: 0.5em;
+  color: hsl(0, 0%, 0%);
+}

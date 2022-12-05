@@ -1,0 +1,23 @@
+.answerpage-container {
+  width: 100%;
+  padding: 1em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* row-gap: 1em; */
+  /* border: 2px solid #fff; */
+}
+
+.enclose-container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  row-gap: .5em;
+  /* border: 2px solid hsl(0, 80%, 46%); */
+}
+
+h4 {
+  /* text-align: left; */
+  font-size: 1.2em;
+  color: #fff;
+}

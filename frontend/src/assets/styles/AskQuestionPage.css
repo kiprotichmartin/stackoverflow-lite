@@ -1,4 +1,4 @@
-.login-container {
+.askq-container {
   width: 100%;
   display: flex;
   align-items: center;
@@ -6,18 +6,19 @@
   /* border: 2px solid #fff; */
 }
 
-.login-section {
-  width: 400px;
+.askq-section {
+  width: 60%;
   box-shadow: 0px 0px 50px 0px rgba(255, 255, 255, 0.1);
 }
 
-.login-form {
+.askq-form {
   display: flex;
   flex-direction: column;
   padding: 1em;
+  row-gap: 0.5em;
 }
 
-.login-title {
+.askq-title {
   text-align: center;
   font-weight: 700;
   font-size: 1.5em;
@@ -26,7 +27,7 @@
 
 .label {
   color: hsl(0, 0%, 100%);
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   font-size: 1.2em;
   font-weight: 500;
 }
@@ -35,30 +36,18 @@
 
 } */
 
-.email-input,
-.pwd-input {
+.description-input,
+.title-input {
   color: hsl(0, 0%, 0%);
-  margin-bottom: 10px;
-  font-size: 1.2em;
+  /* margin-bottom: 10px; */
+  /* font-size: 1.2em; */
   padding: 5px;
 }
 
-/* .email-input {
-  
-} */
+.description-input {
+  font-size: 1.4em;
+}
 
-/* .btn {
-  padding: 10px;
-  margin: 10px 0;
-  font-size: 1em;
-} */
-
-/* .btn-login {
-  color: #ffffff;
-  background-color: #6c009e;
-} */
-
-/* .btn-login:hover {
-  color: #ffffff;
-  background-color: #430361;
-} */
+.title-input {
+  font-size: 1.2em;
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { PrimaryButton, SecondaryButton } from "../ui/Buttons";
 import "../../assets/styles/Header.css";
 
@@ -7,21 +8,26 @@ export default function Header() {
     <>
       <div className="header-container">
         <h3 className="header-title">
-          <a href="#home">
+          <Link className="home-link" to="/">
+            {" "}
             Stack Overflow-Lite
-          </a>
+          </Link>
         </h3>
-        <div className="nav-links">
+        {/* <div className="nav-links">
           <a href="#about" className="nav-link">
             about
           </a>
           <a href="#contact" className="nav-link">
             contact
           </a>
-        </div>
+        </div> */}
         <div className="header-buttons">
-          <PrimaryButton>Login</PrimaryButton>
-          <SecondaryButton>Sign Up</SecondaryButton>
+          <Link to="login">
+            <PrimaryButton>Login</PrimaryButton>
+          </Link>
+          <Link to="signup">
+            <SecondaryButton>Sign Up</SecondaryButton>
+          </Link>
         </div>
       </div>
     </>

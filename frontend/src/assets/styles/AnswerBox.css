@@ -1,0 +1,28 @@
+.ansbox-container {
+  width: 100%;
+  display: flex;
+  column-gap: .5em;
+  font-size: 1.2em;
+  background-color: #000;
+  color: #fff;
+  padding: .5em;
+  margin-top: 1em;
+  border: 2px solid hsl(0, 0%, 100%);
+}
+
+.ans-votes {
+  display: flex;
+  flex-direction: column;
+  row-gap: .5em;
+  font-size: 1em;
+  margin: .5em;
+}
+
+.ans-votes > button {
+  padding: .25em;
+  background-color: #fff;
+}
+
+/* .ans-text > p {
+  font-size: 1em;
+} */

@@ -7,7 +7,7 @@
   border-bottom: 2px solid hsl(0, 0%, 100%);
 }
 
-.header-title > a {
+.home-link {
   font-size: 1.5em;
   color: hsl(348, 85%, 54%);
 }
@@ -21,6 +21,7 @@
 
 .nav-link {
   color: hsl(0, 0%, 100%);
+  font-size: 1.2em;
 }
 
 .nav-link:hover {

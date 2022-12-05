@@ -1,8 +1,23 @@
 import React from "react";
+import { useState } from "react";
 import "../assets/styles/LoginPage.css";
 import { PrimaryButton } from "../components/ui/Buttons";
 
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+
 export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email !== "" || password !== "") {
+      // toast.success("Login Successful", { theme: "dark" });
+    }
+    // toast.warn("Enter email and password", { theme: "dark" });
+  };
+
   return (
     <>
       <div className="signup-container">
@@ -18,8 +33,8 @@ export default function LoginPage() {
               name="signup-email"
               id="email-input"
               placeholder="enter email here..."
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <label className="label pwd-label" htmlFor="pwd-input">
               Password:
@@ -30,13 +45,14 @@ export default function LoginPage() {
               name="signup-pwd"
               id="pwd-input"
               placeholder="enter password here..."
-              // value={password}
-              // onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
-            <PrimaryButton>Login</PrimaryButton>
+            <PrimaryButton onClick={() => handleSubmit()}>Login</PrimaryButton>
           </form>
         </div>
       </div>
+      {/* <ToastContainer /> */}
     </>
   );
 }

@@ -1,0 +1,32 @@
+.postanswer-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 2px solid #fff; */
+}
+
+.postanswer-section {
+  width: 100%;
+  box-shadow: 0px 0px 50px 0px rgba(255, 255, 255, 0.1);
+}
+
+.postanswer-form {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  row-gap: .5em;
+}
+
+.label {
+  color: hsl(0, 0%, 100%);
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.answer-input {
+  color: hsl(0, 0%, 0%);
+  /* margin-bottom: 10px; */
+  font-size: 1.5em;
+  padding: 5px;
+}

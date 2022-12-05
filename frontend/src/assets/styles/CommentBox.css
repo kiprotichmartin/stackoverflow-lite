@@ -1,0 +1,11 @@
+.commentbox-container {
+  width: 100%;
+  background-color: #000;
+  padding: .5em;
+  border: 2px solid hsl(348, 85%, 54%);
+}
+
+.commentbox-container > p {
+  font-size: 1.2em;
+  color: #fff;
+}

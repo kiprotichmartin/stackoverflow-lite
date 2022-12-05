@@ -35,7 +35,8 @@
 
 } */
 
-.input {
+.email-input,
+.pwd-input {
   color: hsl(0, 0%, 0%);
   margin-bottom: 10px;
   font-size: 1.2em;
