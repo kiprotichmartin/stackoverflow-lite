@@ -14,8 +14,11 @@ export default function LoginPage() {
     e.preventDefault();
     if (email !== "" || password !== "") {
       // toast.success("Login Successful", { theme: "dark" });
+      alert("Login successfull");
+    } else if (email === "" || password === "") {
+      // toast.warn("Enter email and password", { theme: "dark" });
+      alert("Login failed");
     }
-    // toast.warn("Enter email and password", { theme: "dark" });
   };
 
   return (
@@ -48,7 +51,7 @@ export default function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <PrimaryButton onClick={() => handleSubmit()}>Login</PrimaryButton>
+            <PrimaryButton onClick={handleSubmit}>Login</PrimaryButton>
           </form>
         </div>
       </div>
