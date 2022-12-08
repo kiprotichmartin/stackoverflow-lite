@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../assets/styles/AskQuestionPage.css";
 import { PrimaryButton, SecondaryButton } from "../components/ui/Buttons";
 
@@ -36,6 +37,12 @@ export default function AskQuestionPage() {
               placeholder="enter description here..."
             ></textarea>
             <PrimaryButton>Post Question</PrimaryButton>
+            {/* <Link to="login">
+              <PrimaryButton>Login</PrimaryButton>
+            </Link>
+            <Link to="initialpage">
+              <SecondaryButton>Cancel</SecondaryButton>
+            </Link> */}
             <SecondaryButton>Cancel</SecondaryButton>
           </form>
         </div>
