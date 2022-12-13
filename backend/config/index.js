@@ -19,7 +19,7 @@ const sqlConfig = {
   },
 };
 
-async () => {
+const dbconn = async () => {
   try {
     // make sure that any items are correctly URL encoded in the connection string
     let conn = await sql.connect(sqlConfig);
@@ -30,5 +30,7 @@ async () => {
     console.log(error);
   }
 };
+
+dbconn();
 
 module.exports = sqlConfig;

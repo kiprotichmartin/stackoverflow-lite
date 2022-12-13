@@ -1,0 +1,10 @@
+CREATE OR ALTER PROCEDURE searchQuestions
+  (@Title VARCHAR(255))
+AS
+BEGIN
+
+  SELECT *
+  FROM STACKOVERFLOWLITE.dbo.Questions
+  WHERE Title = @Title;
+
+END

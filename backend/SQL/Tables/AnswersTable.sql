@@ -1,10 +1,10 @@
--- Create a new table called 'Answers' in schema 'STACKOVERFLOWLITE'
+-- Create a new table called 'Answers' in schema 'dbo'
 -- Drop the table if it already exists
-IF OBJECT_ID('STACKOVERFLOWLITE.Answers', 'U') IS NOT NULL
-DROP TABLE STACKOVERFLOWLITE.Answers
+IF OBJECT_ID('dbo.Answers', 'U') IS NOT NULL
+DROP TABLE dbo.Answers
 GO
 -- Create the table in the specified schema
-CREATE TABLE STACKOVERFLOWLITE.Answers
+CREATE TABLE dbo.Answers
 (
   AnswerID INT NOT NULL PRIMARY KEY,
   QuestionID INT /* CONSTRAINT FK_Answers */ FOREIGN KEY REFERENCES  Questions(QuestionID),
