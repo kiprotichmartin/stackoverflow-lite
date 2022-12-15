@@ -1,10 +1,7 @@
-CREATE OR ALTER PROCEDURE searchQuestions
-  (@Title VARCHAR(255))
+CREATE OR ALTER PROCEDURE searchQuestions(@searchTerm varchar(255))
 AS
 BEGIN
 
-  SELECT *
-  FROM STACKOVERFLOWLITE.dbo.Questions
-  WHERE Title = @Title;
+  SELECT * FROM QuestionsTable WHERE Title LIKE '%' + @searchTerm + '%';
 
 END

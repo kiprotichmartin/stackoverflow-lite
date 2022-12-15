@@ -1,16 +1,11 @@
--- Create a new table called 'Comments' in schema 'dbo'
--- Drop the table if it already exists
-IF OBJECT_ID('dbo.Comments', 'U') IS NOT NULL
-DROP TABLE dbo.Comments
-GO
--- Create the table in the specified schema
-CREATE TABLE dbo.Comments
+CREATE TABLE dbo.CommentsTable
 (
-  CommentID INT NOT NULL PRIMARY KEY,
-  UserID INT /* CONSTRAINT FK_Comments */ FOREIGN KEY REFERENCES  Users(UserID),
-  QuestionID INT /* CONSTRAINT FK_Comments */ FOREIGN KEY REFERENCES  Questions(QuestionID),
-  AnswerID INT /* CONSTRAINT FK_Comments */ FOREIGN KEY REFERENCES  Answers(AnswerID),
+  CommentID VARCHAR(255) NOT NULL PRIMARY KEY,
+  AnswerID VARCHAR(255) /* CONSTRAINT FK_Comments */ FOREIGN KEY REFERENCES  AnswersTable(AnswerID),
+  QuestionID VARCHAR(255) /* CONSTRAINT FK_Comments */ FOREIGN KEY REFERENCES  QuestionsTable(QuestionID),
+  UserID VARCHAR(255) /* CONSTRAINT FK_Comments */ FOREIGN KEY REFERENCES  UsersTable(UserID),
   Username VARCHAR(255) NOT NULL,
   Description VARCHAR(255) NOT NULL,
+  isDeleted BIT NOT NULL DEFAULT 0,
 );
 GO

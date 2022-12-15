@@ -1,18 +1,13 @@
--- Create a new table called 'Answers' in schema 'dbo'
--- Drop the table if it already exists
-IF OBJECT_ID('dbo.Answers', 'U') IS NOT NULL
-DROP TABLE dbo.Answers
-GO
--- Create the table in the specified schema
-CREATE TABLE dbo.Answers
+CREATE TABLE dbo.AnswersTable
 (
-  AnswerID INT NOT NULL PRIMARY KEY,
-  QuestionID INT /* CONSTRAINT FK_Answers */ FOREIGN KEY REFERENCES  Questions(QuestionID),
-  UserID INT /* CONSTRAINT FK_Answers */ FOREIGN KEY REFERENCES  Users(UserID),
+  AnswerID VARCHAR(255) NOT NULL PRIMARY KEY,
+  QuestionID VARCHAR(255) /* CONSTRAINT FK_Answers */ FOREIGN KEY REFERENCES  QuestionsTable(QuestionID),
+  UserID VARCHAR(255) /* CONSTRAINT FK_Answers */ FOREIGN KEY REFERENCES  UsersTable(UserID),
   Username VARCHAR(255) NOT NULL,
   Description VARCHAR(255) NOT NULL,
-  Votes INT,
-  TotalComments INT,
-  PreferredAnswer BIT,
+  Votes INT DEFAULT 0,
+  TotalComments INT DEFAULT 0,
+  PreferredAnswer BIT DEFAULT 0,
+  isDeleted BIT NOT NULL DEFAULT 0,
 );
 GO

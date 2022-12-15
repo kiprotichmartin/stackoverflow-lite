@@ -1,7 +1,5 @@
-CREATE OR ALTER PROCEDURE fetchAllQuestionsAsked (@QuestionID INT)
+CREATE OR ALTER PROCEDURE fetchAllQuestionsAsked(@UserID VARCHAR(255))
 AS
 BEGIN
-
-  SELECT * FROM STACKOVERFLOWLITE.dbo.Questions WHERE QuestionID = @QuestionID;
-
+  SELECT * FROM QuestionsTable WHERE UserID = @UserID
 END

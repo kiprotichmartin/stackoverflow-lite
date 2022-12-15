@@ -1,17 +1,22 @@
 CREATE OR ALTER PROCEDURE dbo.postAComment
   (
-    @Username VARCHAR(255),
-    @Description VARCHAR(255)
-  )
+  @CommentID VARCHAR(255),
+  @AnswerID VARCHAR(255),
+  @QuestionID VARCHAR(255),
+  @UserID VARCHAR(255),
+  @Username VARCHAR(255),
+  @Description VARCHAR(255),
+  @isDeleted BIT = 0
+)
 AS
 
-INSERT INTO STACKOVERFLOWLITE.dbo.Comments
+INSERT INTO CommentsTable
   (
-  [Username], [Description]
+    [CommentID], [AnswerID], [QuestionID], [UserID], [Username], [Description], [isDeleted]
   )
 VALUES
   (
-    @Username, @Description
+    @CommentID, @AnswerID, @QuestionID, @UserID, @Username, @Description, @isDeleted
   )
 
 GO

@@ -1,20 +1,23 @@
 CREATE OR ALTER PROCEDURE dbo.postAQuestion
   (
+  @QuestionID VARCHAR(255),
+  @UserID VARCHAR(255),
   @Username VARCHAR(255),
-  @Avatar VARBINARY(max),
+  @Avatar VARCHAR(255),
   @Title VARCHAR(255),
   @Description VARCHAR(255),
-  @TotalAnswers INT = 0
+  @TotalAnswers INT = 0,
+  @isDeleted BIT = 0
 )
 AS
 
-INSERT INTO STACKOVERFLOWLITE.dbo.Questions
+INSERT INTO QuestionsTable
   (
-  [Username], [Avatar], [Title], [Description], [TotalAnswers]
+  [QuestionID], [UserID], [Username], [Avatar], [Title], [Description], [TotalAnswers], [isDeleted]
   )
 VALUES
   (
-    @Username, @Avatar, @Title, @Description, @TotalAnswers
+    @QuestionID, @UserID, @Username, @Avatar, @Title, @Description, @TotalAnswers, @isDeleted
   )
 
 GO

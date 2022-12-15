@@ -1,13 +1,14 @@
 const sql = require("mssql");
 const dotenv = require("dotenv");
+require("../.env");
 
 dotenv.config();
 
 const sqlConfig = {
-  user: process.env.SQL_USER,
-  password: process.env.SQL_PASSWORD,
-  database: process.env.SQL_DATABASE,
-  server: "localhost",
+  user: process.env.MSSQL_USER,
+  password: process.env.MSSQL_PASSWORD,
+  database: process.env.MSSQL_DATABASE,
+  server: process.env.MSSQL_SERVER,
   pool: {
     max: 10,
     min: 0,
@@ -24,7 +25,7 @@ const dbconn = async () => {
     // make sure that any items are correctly URL encoded in the connection string
     let conn = await sql.connect(sqlConfig);
     // const result = await sql.query`select * from mytable where id = ${value}`;
-    console.dir(`Connected to the database: + ${process.env.SQL_DATABASE}`);
+    console.log(`Connected to the database: ${process.env.MSSQL_DATABASE}`);
   } catch (error) {
     // ... error checks
     console.log(error);
