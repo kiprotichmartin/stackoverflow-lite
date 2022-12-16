@@ -1,12 +1,12 @@
 const Joi = require("joi");
 
-const schema = Joi.object({
-  CommentID: Joi.string()
-    .trim()
-    .guid({
-      version: ["uuidv4"],
-    })
-    .required(),
+const commentsSchema = Joi.object({
+  // CommentID: Joi.string()
+  //   .trim()
+  //   .guid({
+  //     version: ["uuidv4"],
+  //   })
+  //   .required(),
 
   AnswerID: Joi.string()
     .trim()
@@ -41,6 +41,8 @@ const schema = Joi.object({
 
   isDeleted: Joi.boolean().falsy(0).truthy(1),
 });
+
+module.exports = { commentsSchema };
 
 // const validateUser = async () => {
 //   try {

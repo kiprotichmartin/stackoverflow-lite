@@ -1,6 +1,5 @@
 const sql = require("mssql");
 const dotenv = require("dotenv");
-require("../.env.development.local");
 
 dotenv.config();
 

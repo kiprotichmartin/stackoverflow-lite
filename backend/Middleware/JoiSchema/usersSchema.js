@@ -1,6 +1,6 @@
 const Joi = require("joi");
 
-const usersSchema = Joi.object({
+const oldUsersSchema = Joi.object({
   // UserID: Joi.string()
   //   .trim()
   //   .guid({
@@ -8,7 +8,7 @@ const usersSchema = Joi.object({
   //   })
   //   .required(),
 
-  Username: Joi.string().alphanum().min(3).max(30).case('lower').required(),
+  // Username: Joi.string().alphanum().min(3).max(30).case("lower").required(),
 
   Email: Joi.string()
     .trim()
@@ -25,8 +25,38 @@ const usersSchema = Joi.object({
     )
     .required(),
 
-  Avatar: Joi.any(),
+  // Avatar: Joi.any,
 });
+
+const newUsersSchema = Joi.object({
+  // UserID: Joi.string()
+  //   .trim()
+  //   .guid({
+  //     version: ["uuidv4"],
+  //   })
+  //   .required(),
+
+  Username: Joi.string().alphanum().min(3).max(30).case("lower").required(),
+
+  Email: Joi.string()
+    .trim()
+    .email({
+      minDomainSegments: 2,
+      tlds: { allow: ["com", "net"] },
+    })
+    .required(),
+
+  Password: Joi.string()
+    .trim()
+    .pattern(
+      new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})")
+    )
+    .required(),
+
+  Avatar: Joi.any,
+});
+
+module.exports = { oldUsersSchema, newUsersSchema };
 
 // const validateUser = async () => {
 //   try {
