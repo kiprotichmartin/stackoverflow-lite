@@ -1,4 +1,6 @@
 const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
+dotenv.config();
 
 function authenticateToken(req, res, next) {
   const authHeader = req.headers["authorization"];
@@ -9,8 +11,7 @@ function authenticateToken(req, res, next) {
       .status(401)
       .json({ error: "no token issued. please try again" });
 
-  jwt.verify(token, "&m4BQF#5EDuZ@gFr&5MU^Eu", (err, user) => {
-    console.log(err);
+  jwt.verify(token, /*"&m4BQF#5EDuZ@gFr&5MU^Eu",*/ process.env.JWT_TOKEN, (err, user) => {
 
     if (err) return res.status(403).json({ error: err.message });
 

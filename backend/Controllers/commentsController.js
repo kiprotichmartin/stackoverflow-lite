@@ -44,7 +44,6 @@ const deleteAComment = async (req, res) => {
           `SELECT * FROM CommentsTable WHERE CommentID = '${CommentID}' AND isDeleted = 1`
         )
     ).recordset;
-    // console.log(performQuery);
 
     if (performQuery.length > 0) {
       res.status(201).json({

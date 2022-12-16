@@ -72,8 +72,8 @@ const signInUser = async (req, res) => {
           Username,
           Email,
         },
-        // process.env.JWT_SECRET,
-        "&m4BQF#5EDuZ@gFr&5MU^Eu",
+        process.env.JWT_TOKEN,
+        // "&m4BQF#5EDuZ@gFr&5MU^Eu",
         {
           expiresIn: "100s",
         }
