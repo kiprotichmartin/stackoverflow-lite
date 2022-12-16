@@ -116,21 +116,36 @@ const postAQuestion = async (req, res) => {
       isDeleted,
     } = req.body;
     const pool = await mssql.connect(sqlConfig);
-    await pool
-      .request()
-      .input("QuestionID", mssql.VarChar, QuestionID)
-      .input("UserID", mssql.VarChar, UserID)
-      .input("Username", mssql.VarChar, Username)
-      .input("Avatar", mssql.VarChar, Avatar)
-      .input("Title", mssql.VarChar, Title)
-      .input("Description", mssql.VarChar, Description)
-      .input("TotalAnswers", mssql.Int, TotalAnswers)
-      .input("isDeleted", mssql.Bit, isDeleted)
-      .execute("postAQuestion");
 
-    res
-      .status(201)
-      .json({ message: `Your question with id ${QuestionID} has been posted successfully` });
+    const performQuery = (
+      await pool
+        .request()
+        .query(`SELECT * FROM UsersTable WHERE Username = '${Username}' AND UserID = '${UserID}'`)
+    ).recordset;
+
+    if (performQuery.length > 0) {
+      await pool
+        .request()
+        .input("QuestionID", mssql.VarChar, QuestionID)
+        .input("UserID", mssql.VarChar, UserID)
+        .input("Username", mssql.VarChar, Username)
+        .input("Avatar", mssql.VarChar, Avatar)
+        .input("Title", mssql.VarChar, Title)
+        .input("Description", mssql.VarChar, Description)
+        .input("TotalAnswers", mssql.Int, TotalAnswers)
+        .input("isDeleted", mssql.Bit, isDeleted)
+        .execute("postAQuestion");
+
+      res
+        .status(201)
+        .json({ message: `the question with id ${QuestionID} has been posted successfully` });
+    } else {
+      res
+        .status(404)
+        .json({
+          message: `user with Username: ${Username} and UserID ${UserID} do not match. please enter correct details`,
+        });
+    }
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
