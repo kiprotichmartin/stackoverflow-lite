@@ -1,12 +1,12 @@
 const Joi = require("joi");
 
-const schema = Joi.object({
-  UserID: Joi.string()
-    .trim()
-    .guid({
-      version: ["uuidv4"],
-    })
-    .required(),
+const usersSchema = Joi.object({
+  // UserID: Joi.string()
+  //   .trim()
+  //   .guid({
+  //     version: ["uuidv4"],
+  //   })
+  //   .required(),
 
   Username: Joi.string().alphanum().min(3).max(30).case('lower').required(),
 
@@ -25,7 +25,7 @@ const schema = Joi.object({
     )
     .required(),
 
-  Avatar: Joi.string().trim().uri(),
+  Avatar: Joi.any(),
 });
 
 // const validateUser = async () => {
