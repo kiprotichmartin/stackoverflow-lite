@@ -1,0 +1,13 @@
+CREATE TABLE dbo.AnswersTable
+(
+  AnswerID VARCHAR(255) NOT NULL PRIMARY KEY,
+  QuestionID VARCHAR(255) /* CONSTRAINT FK_Answers */ FOREIGN KEY REFERENCES  QuestionsTable(QuestionID),
+  UserID VARCHAR(255) /* CONSTRAINT FK_Answers */ FOREIGN KEY REFERENCES  UsersTable(UserID),
+  Username VARCHAR(255) NOT NULL,
+  Description VARCHAR(255) NOT NULL,
+  Votes INT DEFAULT 0,
+  TotalComments INT DEFAULT 0,
+  PreferredAnswer BIT DEFAULT 0,
+  isDeleted BIT NOT NULL DEFAULT 0,
+);
+GO

@@ -1,0 +1,11 @@
+CREATE TABLE dbo.CommentsTable
+(
+  CommentID VARCHAR(255) NOT NULL PRIMARY KEY,
+  AnswerID VARCHAR(255) /* CONSTRAINT FK_Comments */ FOREIGN KEY REFERENCES  AnswersTable(AnswerID),
+  QuestionID VARCHAR(255) /* CONSTRAINT FK_Comments */ FOREIGN KEY REFERENCES  QuestionsTable(QuestionID),
+  UserID VARCHAR(255) /* CONSTRAINT FK_Comments */ FOREIGN KEY REFERENCES  UsersTable(UserID),
+  Username VARCHAR(255) NOT NULL,
+  Description VARCHAR(255) NOT NULL,
+  isDeleted BIT NOT NULL DEFAULT 0,
+);
+GO
