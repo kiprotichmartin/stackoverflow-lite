@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "../assets/styles/AskQuestionPage.css";
 import { PrimaryButton, SecondaryButton } from "../components/ui/Buttons";
 

@@ -1,32 +1,32 @@
 import {
-  FETCH_QUESTIONS_REQUEST,
-  FETCH_QUESTIONS_SUCCESS,
-  FETCH_QUESTIONS_FAILURE,
-} from "./questionsTypes";
+  FETCH_COMMENTS_REQUEST,
+  FETCH_COMMENTS_SUCCESS,
+  FETCH_COMMENTS_FAILURE,
+} from "./commentsTypes";
 
 const initialState = {
   loading: false,
-  questions: [],
+  comments: [],
   error: "",
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_QUESTIONS_REQUEST:
+    case FETCH_COMMENTS_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case FETCH_QUESTIONS_SUCCESS:
+    case FETCH_COMMENTS_SUCCESS:
       return {
         loading: false,
-        questions: action.payload,
+        comments: action.payload,
         error: "",
       };
-    case FETCH_QUESTIONS_FAILURE:
+    case FETCH_COMMENTS_FAILURE:
       return {
         loading: false,
-        questions: [],
+        comments: [],
         error: action.payload,
       };
     default:
