@@ -23,8 +23,8 @@ const signUpUser = async (req, res) => {
     ).recordset;
 
     if (performQuery.length > 0) {
-      res.status(201).json({
-        message: `the user with email ${Email} already exists. please login`,
+      res.status(401).json({
+        message: "user already exists. please login",
       });
     } else if (performQuery.length === 0) {
       await pool
@@ -37,7 +37,8 @@ const signUpUser = async (req, res) => {
         .execute("signUpUser");
 
       res.status(201).json({
-        message: `the user with email ${Email} has been registered successfully`,
+        message: "user has been registered successfully",
+        shouldLogin: true,
       });
     }
   } catch (error) {

@@ -6,6 +6,31 @@ import {
   FETCH_USERS_FAILURE,
 } from "./usersTypes";
 
+export const signUpUser = (formdata) => {
+  return (dispatch) => {
+    dispatch(fetchUsersRequest());
+    axios
+      .post("http://localhost:5000/users/signup", formdata)
+      .then((response) => {
+        // response.data is the users
+        // const users = response.data;
+        console.log(response);
+        sessionStorage.removeItem("shouldLogin");
+        sessionStorage.setItem("shouldLogin", response.data.shouldLogin);
+        toast.success(response.data.message, { theme: "dark" });
+        dispatch(fetchUsersSuccess());
+      })
+      .catch((error) => {
+        // error.message is the error message
+        console.log(error);
+        sessionStorage.removeItem("shouldLogin");
+        toast.warn(error.response.data.message, { theme: "dark" });
+        // toast.warn("check if your password includes numbers and special characters", { theme: "dark" });
+        dispatch(fetchUsersFailure(error.message));
+      });
+  };
+};
+
 export const signInUser = (formdata) => {
   return (dispatch) => {
     dispatch(fetchUsersRequest());
