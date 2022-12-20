@@ -13,7 +13,23 @@ export const fetchQuestions = () => {
       .then((response) => {
         // response.data is the questions
         const questions = response.data;
-        console.log(questions);
+        dispatch(fetchQuestionsSuccess(questions));
+      })
+      .catch((error) => {
+        // error.message is the error message
+        dispatch(fetchQuestionsFailure(error.message));
+      });
+  };
+};
+
+export const fetchOneQuestion = (questionid) => {
+  return (dispatch) => {
+    dispatch(fetchQuestionsRequest());
+    axios
+      .get(`http://localhost:5000/questions/${questionid}`)
+      .then((response) => {
+        // response.data is the questions
+        const questions = response.data;
         dispatch(fetchQuestionsSuccess(questions));
       })
       .catch((error) => {
@@ -31,7 +47,40 @@ export const searchQuestions = (searchterm) => {
       .then((response) => {
         // response.data is the questions
         const questions = response.data;
-        console.log(questions);
+        dispatch(fetchQuestionsSuccess(questions));
+      })
+      .catch((error) => {
+        // error.message is the error message
+        dispatch(fetchQuestionsFailure(error.message));
+      });
+  };
+};
+
+export const mostanswers = () => {
+  return (dispatch) => {
+    dispatch(fetchQuestionsRequest());
+    axios
+      .get("http://localhost:5000/questions/question/mostanswers")
+      .then((response) => {
+        // response.data is the questions
+        const questions = response.data;
+        dispatch(fetchQuestionsSuccess(questions));
+      })
+      .catch((error) => {
+        // error.message is the error message
+        dispatch(fetchQuestionsFailure(error.message));
+      });
+  };
+};
+
+export const allQuestionsAsked = (userid) => {
+  return (dispatch) => {
+    dispatch(fetchQuestionsRequest());
+    axios
+      .get(`http://localhost:5000/questions/user/${userid}`)
+      .then((response) => {
+        // response.data is the questions
+        const questions = response.data;
         dispatch(fetchQuestionsSuccess(questions));
       })
       .catch((error) => {
@@ -50,6 +99,23 @@ export const PostAQuestion = (formdata) => {
         // response.data is the questions
         const questions = response.data;
         console.log(questions);
+        dispatch(fetchQuestionsSuccess(questions));
+      })
+      .catch((error) => {
+        // error.message is the error message
+        dispatch(fetchQuestionsFailure(error.message));
+      });
+  };
+};
+
+export const deleteQuestion = (questionid) => {
+  return (dispatch) => {
+    dispatch(fetchQuestionsRequest());
+    axios
+      .get(`http://localhost:5000/questions/${questionid}`)
+      .then((response) => {
+        // response.data is the questions
+        const questions = response.data;
         dispatch(fetchQuestionsSuccess(questions));
       })
       .catch((error) => {

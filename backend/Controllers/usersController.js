@@ -62,7 +62,7 @@ const signInUser = async (req, res) => {
         performQuery[0].Password
       );
       if (!checkPasswordValidity)
-        return res.status(403).json({ message: "wrong password" });
+        return res.status(400).json({ message: "wrong password" });
 
       const { UserID, Username, Email } = performQuery[0];
 
@@ -79,22 +79,22 @@ const signInUser = async (req, res) => {
         }
       );
 
-      res.status(201).json({
-        message: `the user with email ${Email} exists. login successful`,
+      res.status(200).json({
+        message: "login successful",
         auth: true,
-        UserID: UserID,
-        Email: Email,
-        Username: Username,
-        Password: Password,
+        // UserID: UserID,
+        // Email: Email,
+        // Username: Username,
+        // Password: Password,
         Token: token,
       });
     } else if (performQuery.length === 0) {
-      res.status(201).json({
-        message: `the user with email ${Email} is not registered. please register`,
+      res.status(404).json({
+        message: "user is not registered. please register",
       });
     }
   } catch (error) {
-    res.status(404).json({ error: error.message });
+    res.status(400).json({ error: error.message });
   }
 };
 

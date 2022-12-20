@@ -4,6 +4,6 @@ const { oldUsersValidation, newUsersValidation } = require("../Middleware/Schema
 const usersRoutes = Router();
 
 usersRoutes.get("/signup", newUsersValidation, signUpUser);
-usersRoutes.get("/signin", oldUsersValidation, signInUser);
+usersRoutes.post("/signin", oldUsersValidation, signInUser);
 
 module.exports = { usersRoutes };

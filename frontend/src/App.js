@@ -8,9 +8,6 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import AnswersPage from "./pages/AnswersPage";
 
-// import { ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-
 function App() {
   return (
     <div className="App">
