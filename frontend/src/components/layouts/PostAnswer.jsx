@@ -19,7 +19,7 @@ export default function PostAnswer() {
               rows="10"
               placeholder="enter answer here..."
             ></textarea>
-            <PrimaryButton>Post Question</PrimaryButton>
+            <PrimaryButton>Post Answer</PrimaryButton>
           </form>
         </div>
       </div>

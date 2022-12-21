@@ -4,7 +4,8 @@ import { /*connect,*/ useDispatch, useSelector } from "react-redux";
 import "../assets/styles/InitialPage.css";
 import QuestionBox from "../components/layouts/QuestionBox";
 import { PrimaryButton } from "../components/ui/Buttons";
-import { fetchQuestions, searchQuestions } from "../redux/features/questions/questionsActions";
+import { fetchQuestions, mostanswers, searchQuestions } from "../redux/features/questions/questionsActions";
+import { useRef } from "react";
 
 function InitialPage(/*{ questionsData, fetchQuestions, searchQuestions }*/) {
   const questions = useSelector((state) => state.questions.questions);
@@ -12,42 +13,56 @@ function InitialPage(/*{ questionsData, fetchQuestions, searchQuestions }*/) {
   const error = useSelector((state) => state.questions.error);
   const dispatch = useDispatch();
 
-  const [search, setSearch] = useState(" ");
+  const [search, setSearch] = useState("");
+  // const search = useRef();
 
   useEffect(() => {
     dispatch(fetchQuestions());
   }, []);
 
   const handleSearch = (event) => {
+    // event.preventDefault();
     setSearch(event.target.value);
     // if (!search === "") {
+    console.log(search);
       dispatch(searchQuestions(search));
     // }
     console.log(search);
   };
 
+  const handleMostAns = () => {
+    dispatch(mostanswers());
+  }
+
   if (loading) {
-    return <h3 style={{ color: "#white" }}>Loading...</h3>;
+    return <h3 style={{ color: "#white", textAlign: "center" }}>Loading...</h3>;
   } else if (error) {
-    return <h4 style={{ color: "white" }}>{error}</h4>;
+    return <h4 style={{ color: "white", textAlign: "center" }}>{error}</h4>;
   } else {
     return (
       <>
         <div className="main-container">
           <div className="initialpage-container">
             <section className="action-btns">
+              {/* <PrimaryButton>
+                <span onClick={handleSearch}>Search</span>
+              </PrimaryButton> */}
               <input
                 className="search-input"
                 type="search"
                 name=""
                 id=""
                 placeholder="search a question"
-                value={search}
+                // ref={search}
+                // value={search}
                 onChange={handleSearch}
               />
               <Link to="askquestion">
                 <PrimaryButton>Ask Question</PrimaryButton>
               </Link>
+              <PrimaryButton>
+                <span onClick={handleMostAns}>Most Answered Question</span>
+              </PrimaryButton>
             </section>
             {/* {questionsData &&
             questionsData.questions &&

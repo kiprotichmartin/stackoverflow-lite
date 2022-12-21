@@ -15,12 +15,12 @@ export default function QuestionBox({ questions }) {
     <>
       <div key={questions.QuestionID} className="qbox-container">
         <div className="qbox-stats">
-          <p className="stats">4 votes</p>
+          {/* <p className="stats">4 votes</p> */}
           {/* <p className="stats">
             6 downvotes
           </p> */}
-          <p className="stats">10 answers</p>
-          <p className="stats">3 comments</p>
+          <p className="stats">{questions.TotalAnswers} answers</p>
+          {/* <p className="stats">3 comments</p> */}
         </div>
         <div className="qbox-body">
           <div className="qbox-question">
@@ -30,6 +30,7 @@ export default function QuestionBox({ questions }) {
                 {questions.Title}
               </h3>
             </Link>
+            <p>{questions.Description}</p>
           </div>
           <div className="user-info">
             <div className="avatar-container">

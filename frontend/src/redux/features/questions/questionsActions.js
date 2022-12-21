@@ -1,4 +1,6 @@
 import axios from "axios";
+import { toast } from "react-toastify";
+// import { AuthHelper, authHelper } from "../../../utils/AuthHelper";
 import {
   FETCH_QUESTIONS_REQUEST,
   FETCH_QUESTIONS_SUCCESS,
@@ -47,6 +49,7 @@ export const searchQuestions = (searchterm) => {
       .then((response) => {
         // response.data is the questions
         const questions = response.data;
+        console.log(questions);
         dispatch(fetchQuestionsSuccess(questions));
       })
       .catch((error) => {
@@ -90,19 +93,27 @@ export const allQuestionsAsked = (userid) => {
   };
 };
 
-export const PostAQuestion = (formdata) => {
+export const postQuestion = (formdata) => {
   return (dispatch) => {
     dispatch(fetchQuestionsRequest());
+    const token = sessionStorage.getItem("token");
     axios
-      .post("http://localhost:5000/questions")
+      .post("http://localhost:5000/questions", formdata, { headers: { 'authorization': `${token}` }
+})
       .then((response) => {
         // response.data is the questions
         const questions = response.data;
-        console.log(questions);
+        console.log(response);
+        // sessionStorage.removeItem("userid");
+        // sessionStorage.removeItem("username");
+        // sessionStorage.setItem("shouldLogin", response.data.shouldLogin);
         dispatch(fetchQuestionsSuccess(questions));
       })
       .catch((error) => {
         // error.message is the error message
+        console.log(error);
+        // sessionStorage.removeItem("shouldLogin");
+        toast.warn(error.response.data.error, { theme: "dark" });
         dispatch(fetchQuestionsFailure(error.message));
       });
   };

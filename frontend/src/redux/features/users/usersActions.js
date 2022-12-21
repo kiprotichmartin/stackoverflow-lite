@@ -17,6 +17,8 @@ export const signUpUser = (formdata) => {
         console.log(response);
         sessionStorage.removeItem("shouldLogin");
         sessionStorage.setItem("shouldLogin", response.data.shouldLogin);
+        sessionStorage.setItem("userid", response.data.UserID);
+        sessionStorage.setItem("username", response.data.Username);
         toast.success(response.data.message, { theme: "dark" });
         dispatch(fetchUsersSuccess());
       })
@@ -40,9 +42,15 @@ export const signInUser = (formdata) => {
         // response.data is the users
         // const users = response.data;
         console.log(response);
-        sessionStorage.removeItem("token");
+        // sessionStorage.removeItem("token");
+        // sessionStorage.removeItem("auth");
+        // sessionStorage.removeItem("userid");
+        // sessionStorage.removeItem("username");
+        sessionStorage.clear();
         sessionStorage.setItem("token", response.data.Token);
         sessionStorage.setItem("auth", response.data.auth);
+        sessionStorage.setItem("userid", response.data.UserID);
+        sessionStorage.setItem("username", response.data.Username);
         toast.success(response.data.message, { theme: "dark" });
         dispatch(fetchUsersSuccess());
       })
@@ -51,6 +59,8 @@ export const signInUser = (formdata) => {
         console.log(error);
         sessionStorage.removeItem("token");
         sessionStorage.removeItem("auth");
+        sessionStorage.removeItem("userid");
+        sessionStorage.removeItem("username");
         toast.warn(error.response.data.message, { theme: "dark" });
         dispatch(fetchUsersFailure(error.message));
       });

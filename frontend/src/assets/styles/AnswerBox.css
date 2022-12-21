@@ -1,6 +1,8 @@
 .ansbox-container {
   width: 100%;
   display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
   column-gap: .5em;
   font-size: 1.2em;
   background-color: #000;
@@ -23,6 +25,12 @@
   background-color: #fff;
 }
 
-/* .ans-text > p {
+.ans-text > p {
   font-size: 1em;
-} */
+  text-align: left;
+}
+
+.ans-actions {
+  display: flex;
+  flex-direction: column;
+}
