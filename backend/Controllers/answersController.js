@@ -2,6 +2,29 @@ const { v4: uuidv4 } = require("uuid");
 const mssql = require("mssql");
 const sqlConfig = require("../config/index");
 
+const getAnswers = async (req, res) => {
+  try {
+    const { QuestionID } = req.params;
+    const pool = await mssql.connect(sqlConfig);
+    const answer = (
+      await pool
+        .request()
+        .input("QuestionID", mssql.VarChar, QuestionID)
+        .execute("getAnswers")
+    ).recordset;
+
+    if (answer.length) {
+      res.status(200).json(answer);
+    } else {
+      res.status(404).json({
+        message: "the answer(s) (do)es not exist",
+      });
+    }
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};
+
 const postAnAnswer = async (req, res) => {
   try {
     const AnswerID = uuidv4();
@@ -179,6 +202,7 @@ const deleteAnAnswer = async (req, res) => {
 };
 
 module.exports = {
+  getAnswers,
   postAnAnswer,
   markPreferredAnswer,
   upvoteAnswer,

@@ -1,4 +1,5 @@
 const {
+  getAnswers,
   postAnAnswer,
   markPreferredAnswer,
   upvoteAnswer,
@@ -11,24 +12,25 @@ const { authenticateToken } = require("../Middleware/verifyToken");
 const answersValidation = require("../Middleware/SchemaValidators/answersSchemaValidator");
 const answersRoutes = Router();
 
-answersRoutes.post("/:QuestionID/answers", authenticateToken, answersValidation, postAnAnswer);
+answersRoutes.get("/:QuestionID", getAnswers);
+answersRoutes.post("/", authenticateToken, answersValidation, postAnAnswer);
 answersRoutes.put(
-  "/:QuestionID/answers/:AnswerID",
+  "/:AnswerID",
   authenticateToken,
   markPreferredAnswer
 );
 answersRoutes.put(
-  "/:QuestionID/answers/:AnswerID/vote/upvote",
+  "/:AnswerID/vote/upvote",
   authenticateToken,
   upvoteAnswer
 );
 answersRoutes.put(
-  "/:QuestionID/answers/:AnswerID/vote/downvote",
+  "/:AnswerID/vote/downvote",
   authenticateToken,
   downvoteAnswer
 );
 answersRoutes.delete(
-  "/:QuestionID/answers/:AnswerID",
+  "/:AnswerID",
   authenticateToken,
   deleteAnAnswer
 );

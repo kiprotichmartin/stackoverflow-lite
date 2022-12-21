@@ -76,16 +76,16 @@ const signInUser = async (req, res) => {
         process.env.JWT_TOKEN,
         // "&m4BQF#5EDuZ@gFr&5MU^Eu",
         {
-          expiresIn: "100s",
+          expiresIn: "1000s",
         }
       );
 
       res.status(200).json({
         message: "login successful",
         auth: true,
-        // UserID: UserID,
+        UserID: UserID,
         // Email: Email,
-        // Username: Username,
+        Username: Username,
         // Password: Password,
         Token: token,
       });

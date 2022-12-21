@@ -137,13 +137,13 @@ const postAQuestion = async (req, res) => {
         .execute("postAQuestion");
 
       res
-        .status(201)
-        .json({ message: `the question with id ${QuestionID} has been posted successfully` });
+        .status(200)
+        .json({ message: "question has been posted successfully" });
     } else {
       res
         .status(404)
         .json({
-          message: `user with Username: ${Username} and UserID ${UserID} do not match. please enter correct details`,
+          message: "enter correct user details",
         });
     }
   } catch (error) {

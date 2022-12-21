@@ -2,6 +2,29 @@ const { v4: uuidv4 } = require("uuid");
 const mssql = require("mssql");
 const sqlConfig = require("../config/index");
 
+const getComments = async (req, res) => {
+  try {
+    const { QuestionID } = req.params;
+    const pool = await mssql.connect(sqlConfig);
+    const comment = (
+      await pool
+        .request()
+        .input("QuestionID", mssql.VarChar, QuestionID)
+        .execute("getComments")
+    ).recordset;
+
+    if (comment.length) {
+      res.status(200).json(comment);
+    } else {
+      res.status(404).json({
+        message: "the comment(s) (do)es not exist",
+      });
+    }
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};
+
 const postAComment = async (req, res) => {
   try {
     const CommentID = uuidv4();
@@ -82,4 +105,4 @@ const deleteAComment = async (req, res) => {
   }
 };
 
-module.exports = { postAComment, deleteAComment };
+module.exports = { getComments, postAComment, deleteAComment };

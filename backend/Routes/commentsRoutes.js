@@ -1,4 +1,5 @@
 const {
+  getComments,
   postAComment,
   deleteAComment,
 } = require("../Controllers/commentsController");
@@ -8,6 +9,7 @@ const { authenticateToken } = require("../Middleware/verifyToken");
 const commentsValidation = require("../Middleware/SchemaValidators/commentsSchemaValidator");
 const commentsRoutes = Router();
 
+commentsRoutes.get("/:QuestionID", getComments);
 commentsRoutes.post(
   "/:QuestionID/answers/:AnswerID/comments",
   authenticateToken,
@@ -16,6 +18,7 @@ commentsRoutes.post(
 );
 commentsRoutes.delete(
   "/:QuestionID/answers/:AnswerID/comments/:CommentID",
+  // "/:QuestionID/answers/:AnswerID/comments/:CommentID",
   authenticateToken,
   deleteAComment
 );

@@ -13,7 +13,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/questions", questionsRoutes);
-app.use("/questions", answersRoutes);
+app.use("/answers", answersRoutes);
 app.use("/questions", commentsRoutes);
 app.use("/users", usersRoutes);
 
