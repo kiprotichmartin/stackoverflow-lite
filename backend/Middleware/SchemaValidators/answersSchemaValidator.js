@@ -2,7 +2,7 @@ const { answersSchema } = require("../JoiSchema/answersSchema");
 
 const answersValidation = async (req, res, next) => {
   const payload = {
-    QuestionID: req.params.QuestionID,
+    QuestionID: req.body.QuestionID,
     UserID: req.body.UserID,
     Username: req.body.Username,
     Description: req.body.Description,

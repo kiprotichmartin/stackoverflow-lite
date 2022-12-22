@@ -21,7 +21,7 @@ export default function AskQuestionPage() {
     Username: username,
     Title: title,
     Description: description,
-    TotalAnswers: 7,
+    TotalAnswers: 0,
     isDeleted: 0,
   };
 
@@ -35,8 +35,8 @@ export default function AskQuestionPage() {
     // if (auth) {
     //   navigate("/");
     // }
-    // setTitle("");
-    // setDescription("");
+    setTitle("");
+    setDescription("");
   };
 
   return (

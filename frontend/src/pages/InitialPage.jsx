@@ -5,7 +5,7 @@ import "../assets/styles/InitialPage.css";
 import QuestionBox from "../components/layouts/QuestionBox";
 import { PrimaryButton } from "../components/ui/Buttons";
 import { fetchQuestions, mostanswers, searchQuestions } from "../redux/features/questions/questionsActions";
-import { useRef } from "react";
+// import { useRef } from "react";
 
 function InitialPage(/*{ questionsData, fetchQuestions, searchQuestions }*/) {
   const questions = useSelector((state) => state.questions.questions);
@@ -18,7 +18,7 @@ function InitialPage(/*{ questionsData, fetchQuestions, searchQuestions }*/) {
 
   useEffect(() => {
     dispatch(fetchQuestions());
-  }, []);
+  }, [dispatch]);
 
   const handleSearch = (event) => {
     // event.preventDefault();
@@ -71,7 +71,7 @@ function InitialPage(/*{ questionsData, fetchQuestions, searchQuestions }*/) {
             ))} */}
             {questions &&
               questions.map((question) => (
-                <QuestionBox key={question.QuestionID} questions={question} />
+                <QuestionBox key={question.QuestionID} elid={question.QuestionID} questions={question} />
               ))}
           </div>
         </div>

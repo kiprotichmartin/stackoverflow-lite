@@ -28,8 +28,9 @@ const getAnswers = async (req, res) => {
 const postAnAnswer = async (req, res) => {
   try {
     const AnswerID = uuidv4();
-    const { QuestionID } = req.params;
+    // const { QuestionID } = req.params;
     const {
+      QuestionID,
       UserID,
       Username,
       Description,
@@ -44,7 +45,7 @@ const postAnAnswer = async (req, res) => {
       await pool
         .request()
         .query(
-          `SELECT * FROM QuestionsTable WHERE Username = '${Username}' AND UserID = '${UserID}' AND QuestionID = '${QuestionID}'`
+          `SELECT * FROM QuestionsTable WHERE QuestionID = '${QuestionID}'`
         )
     ).recordset;
 
@@ -60,11 +61,11 @@ const postAnAnswer = async (req, res) => {
         .execute("postAnAnswer");
 
       res.status(201).json({
-        message: `the answer with id ${AnswerID} has been posted successfully`,
+        message: "answer posted successfully",
       });
     } else {
       res.status(404).json({
-        message: `user with Username: ${Username} and UserID ${UserID} answering question with QuestionID ${QuestionID} do not match. please enter correct details`,
+        message: "the question does not exist",
       });
     }
   } catch (error) {
@@ -92,7 +93,7 @@ const markPreferredAnswer = async (req, res) => {
         .execute("markPreferredAnswer");
 
       res.status(201).json({
-        message: `Your answer with id ${AnswerID} has been successfully de-selected as the preferred answer`,
+        message: "successfully de-selected as the preferred answer",
       });
     } else if (performQuery.length === 0) {
       await pool
@@ -101,7 +102,7 @@ const markPreferredAnswer = async (req, res) => {
         .execute("markPreferredAnswer");
 
       res.status(201).json({
-        message: `Your answer with id ${AnswerID} has been successfully selected as the preferred answer`,
+        message: "successfully selected as the preferred answer",
       });
     }
   } catch (error) {
@@ -127,11 +128,11 @@ const upvoteAnswer = async (req, res) => {
         .execute("upvoteAnswer");
 
       res.status(201).json({
-        message: `the answer with id ${AnswerID} has been successfully upvoted`,
+        message: `successfully upvoted`,
       });
     } else if (performQuery.length === 0) {
       res.status(404).json({
-        message: `the answer with id ${AnswerID} does not exist`,
+        message: "answer does not exist",
       });
     }
   } catch (error) {
@@ -157,11 +158,11 @@ const downvoteAnswer = async (req, res) => {
         .execute("downvoteAnswer");
 
       res.status(201).json({
-        message: `the answer with id ${AnswerID} has been successfully downvoted`,
+        message: "successfully downvoted",
       });
     } else if (performQuery.length === 0) {
       res.status(404).json({
-        message: `the answer with id ${AnswerID} does not exist`,
+        message: "answer does not exist",
       });
     }
   } catch (error) {
@@ -184,7 +185,7 @@ const deleteAnAnswer = async (req, res) => {
 
     if (performQuery.length > 0) {
       res.status(201).json({
-        message: `the answer with id ${AnswerID} cannot be deleted because it does not exist`,
+        message: "answer cannot be deleted because it does not exist",
       });
     } else if (performQuery.length === 0) {
       await pool

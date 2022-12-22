@@ -1,10 +1,12 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-// import { AuthHelper, authHelper } from "../../../utils/AuthHelper";
 import {
   FETCH_QUESTIONS_REQUEST,
   FETCH_QUESTIONS_SUCCESS,
   FETCH_QUESTIONS_FAILURE,
+  FETCH_ONE_QUESTION_REQUEST,
+  FETCH_ONE_QUESTION_SUCCESS,
+  FETCH_ONE_QUESTION_FAILURE,
 } from "./questionsTypes";
 
 export const fetchQuestions = () => {
@@ -26,17 +28,17 @@ export const fetchQuestions = () => {
 
 export const fetchOneQuestion = (questionid) => {
   return (dispatch) => {
-    dispatch(fetchQuestionsRequest());
+    dispatch(fetchOneQuestionRequest());
     axios
       .get(`http://localhost:5000/questions/${questionid}`)
       .then((response) => {
         // response.data is the questions
-        const questions = response.data;
-        dispatch(fetchQuestionsSuccess(questions));
+        const question = response.data;
+        dispatch(fetchOneQuestionSuccess(question));
       })
       .catch((error) => {
         // error.message is the error message
-        dispatch(fetchQuestionsFailure(error.message));
+        dispatch(fetchOneQuestionFailure(error.message));
       });
   };
 };
@@ -98,21 +100,16 @@ export const postQuestion = (formdata) => {
     dispatch(fetchQuestionsRequest());
     const token = sessionStorage.getItem("token");
     axios
-      .post("http://localhost:5000/questions", formdata, { headers: { 'authorization': `${token}` }
+      .post("http://localhost:5000/questions", formdata, { headers: { authorization: `${token}` }
 })
       .then((response) => {
         // response.data is the questions
         const questions = response.data;
-        console.log(response);
-        // sessionStorage.removeItem("userid");
-        // sessionStorage.removeItem("username");
-        // sessionStorage.setItem("shouldLogin", response.data.shouldLogin);
+        toast.success(response.data.message, { theme: "dark" });
         dispatch(fetchQuestionsSuccess(questions));
       })
       .catch((error) => {
         // error.message is the error message
-        console.log(error);
-        // sessionStorage.removeItem("shouldLogin");
         toast.warn(error.response.data.error, { theme: "dark" });
         dispatch(fetchQuestionsFailure(error.message));
       });
@@ -152,6 +149,26 @@ export const fetchQuestionsSuccess = (questions) => {
 export const fetchQuestionsFailure = (error) => {
   return {
     type: FETCH_QUESTIONS_FAILURE,
+    payload: error,
+  };
+};
+
+export const fetchOneQuestionRequest = (error) => {
+  return {
+    type: FETCH_ONE_QUESTION_REQUEST,
+  };
+};
+
+export const fetchOneQuestionSuccess = (question) => {
+  return {
+    type: FETCH_ONE_QUESTION_SUCCESS,
+    payload: question,
+  };
+};
+
+export const fetchOneQuestionFailure = (error) => {
+  return {
+    type: FETCH_ONE_QUESTION_FAILURE,
     payload: error,
   };
 };

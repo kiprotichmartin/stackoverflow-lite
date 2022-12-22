@@ -9,7 +9,7 @@ export default function QuestionBox({ questions }) {
 
   const handleOneQuestion = () => {
     dispatch(fetchOneQuestion(questions.QuestionID));
-  }
+  };
 
   return (
     <>
@@ -24,7 +24,12 @@ export default function QuestionBox({ questions }) {
         </div>
         <div className="qbox-body">
           <div className="qbox-question">
-            <Link to="answerspage">
+            <Link
+              to={{
+                pathname: `/answerspage/${questions.QuestionID}`,
+                // state: { QuestionID: questions.QuestionID },
+              }}
+            >
               <h3 className="question-title" onClick={handleOneQuestion}>
                 {/* What is the difference between a statement and an expressoin? */}
                 {questions.Title}

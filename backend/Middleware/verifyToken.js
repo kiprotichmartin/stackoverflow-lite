@@ -4,10 +4,10 @@ dotenv.config();
 
 function authenticateToken(req, res, next) {
   const authHeader = req.headers["authorization"];
-  console.log(authHeader);
-  const token = authHeader && authHeader.split(" ")[1];
+  // console.log(authHeader);
+  const token = authHeader;
 
-  if (token == null)
+  if (token === null)
     return res
       .status(401)
       .json({ error: "no token issued. please try again" });
@@ -17,6 +17,7 @@ function authenticateToken(req, res, next) {
     if (err) return res.status(403).json({ error: err.message });
 
     req.user = user;
+    // console.log(req.user);
 
     next();
   });

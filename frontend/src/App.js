@@ -9,16 +9,16 @@ import SignUpPage from "./pages/SignUpPage";
 import AnswersPage from "./pages/AnswersPage";
 
 function App() {
+
   return (
     <div className="App">
-      {/* <ToastContainer /> */}
       <Header />
       <Routes>
         <Route exact path="/" element={<InitialPage />} />
-        <Route exact path="login" element={<LoginPage />} />
-        <Route exact path="signup" element={<SignUpPage />} />
-        <Route exact path="askquestion" element={<AskQuestionPage />} />
-        <Route exact path="answerspage" element={<AnswersPage />} />
+        <Route exact path="/login" element={<LoginPage />} />
+        <Route exact path="/signup" element={<SignUpPage />} />
+        <Route exact path="/askquestion" element={<AskQuestionPage />} />
+        <Route exact path="/answerspage/:QuestionID" element={<AnswersPage />} />
       </Routes>
       <Footer />
     </div>
