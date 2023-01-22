@@ -31,7 +31,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/kiprotichmartin/stackoverflow-lite">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="./frontend/src/assets/images/224148858_513688893270285_4151602736277376682_n.jpg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">STACKOVERFLOW-LITE</h3>
@@ -83,9 +83,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Stack Overflow-Lite Screen Shot][product-screenshot]](https://example.com)
+[![Stack Overflow-Lite Screen Shot][product-screenshot]]<!--(https://example.com)-->
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `kiprotichmartin`, `stackoverflow-lite`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+<!-- Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description` -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -112,31 +112,33 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+<!-- This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps. -->
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+Things you need to use the software and how to install them.
+1. Download Node.js + NPM
+2. Download Microsoft SQL Server (unsure)
+3. Download Visual Studio Code Editor
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/kiprotichmartin/stackoverflow-lite.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. Go to the directory "stackoverflow-lite/frontend" and run the following command
+   ```sh
+   npm start
+   ```
+4. Go to the directory "stackoverflow-lite/backend" and run the following command
+   ```sh
+   nodemon server.js
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -145,10 +147,19 @@ This is an example of how to list things you need to use the software and how to
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+Some screenshots of the various pages:
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+1. Homepage (1): [homepage-cut]
+2. Homepage (2): [homepage-full]
+3. Post An Answer Page: [postanswerpage-full]
+4. Ask A Question Page: [askquestionpage]
+5. Login Page: [loginpage]
+6. Sign Up Page: [signuppage]
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+
+<!-- Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources. -->
+
+<!-- _For more examples, please refer to the [Documentation](https://example.com)_ -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -157,10 +168,11 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [✅] Sign Up and Login a user (JWT for auth)
+* [✅] Fetch questions, answers and comments from the DB
+- [✅] Ask a question, post ans answer and comment on answers
+- [❌] Upvote or Downvote an answer and a comment
+    <!-- - [ ] Nested Feature -->
 
 See the [open issues](https://github.com/kiprotichmartin/stackoverflow-lite/issues) for a full list of proposed features (and known issues).
 
@@ -209,9 +221,7 @@ Project Link: [https://github.com/kiprotichmartin/stackoverflow-lite](https://gi
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* [Resources in Notion](https://www.notion.so/Stack-Overflow-Lite-e0c3a35063da4b8586c2170a6c4072e1)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -231,7 +241,13 @@ Project Link: [https://github.com/kiprotichmartin/stackoverflow-lite](https://gi
 [license-url]: https://github.com/kiprotichmartin/stackoverflow-lite/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/martinkiprotich/
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: /frontend/src/assets/images/stackoverflow-lite-full.jpeg
+[homepage-cut]: /frontend/src/assets/images/stackoverflow-lite-1page.jpeg
+[homepage-full]: /frontend/src/assets/images/stackoverflow-lite-full.jpeg
+[askquestionpage]: /frontend/src/assets/images/stackoverflow-lite-askquestionpage.jpeg
+[postanswerpage-full]: /frontend/src/assets/images/stackoverflow-lite-postanswerpage.jpeg
+[signuppage]: /frontend/src/assets/images/stackoverflow-lite-signuppagejpeg.jpeg
+[loginpage]: /frontend/src/assets/images/stackoverflow-lite-loginpage.jpeg
 <!-- [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/ -->
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
@@ -255,3 +271,12 @@ Project Link: [https://github.com/kiprotichmartin/stackoverflow-lite](https://gi
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com  -->
+
+[github-username]: [@kiprotichmartin]
+[repo_name]: (stackoverflow-lite)
+[twitter_handle]: (@martinkiprotch)
+[linkedin_username]: (martinkiprotich)
+[email_client]: (gmail.com)
+[email]: (martinkiprotich.mk@gmail.com)
+<!-- [project_title]: (Stack Overflow Lite) -->
+<!-- [project-description]: () -->
